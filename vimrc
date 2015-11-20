@@ -1,4 +1,3 @@
-" Leader
 let mapleader = " "
 
 set backspace=2   " Backspace deletes like most programs in insert mode
@@ -12,20 +11,14 @@ set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-endif
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-endif
+source ~/.vimrc.bundles
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
 endif
+
 
 filetype plugin indent on
 
@@ -155,7 +148,7 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
-endif
+syntax on
+syntax enable
+
+colorscheme solarized
